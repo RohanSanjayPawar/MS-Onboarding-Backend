@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.ms.au.onboarding_portal.dao.impl.UserDAOImpl;
 import com.ms.au.onboarding_portal.model.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -30,7 +31,7 @@ public class UserDAOTest {
 
 	@Test
 	public void findUserById() {
-		List<User> users = userDao.getUserForId(1);
+		List<User> users = userDao.getUserForEmail("rohan.sanjaypawar@accoliteindia.com");
 		assertNotNull(users);
 		assertTrue(users.size() == 1);
 	}

@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import com.ms.au.onboarding_portal.model.User;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Interface UserDAO.
  * 
@@ -28,7 +27,7 @@ public interface UserDAO {
 	 * @param uid the uid
 	 * @return the user for id
 	 */
-	public List<User> getUserForId(int uid);
+	public List<User> getUserForEmail(String email);
 	
 	
 	/**
@@ -38,4 +37,13 @@ public interface UserDAO {
 	 * @return the user
 	 */
 	public List<User> loginUser(String authorizationHeader);
+	
+	
+	/**
+	 * Adds the user.
+	 *
+	 * @param user the user
+	 */
+	public void addUser(User user);
+	
 }

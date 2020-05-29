@@ -30,7 +30,7 @@ public class UserControllerTest {
 
 	@Test
 	public void findUserById() {
-		List<User> users = userController.getUserWithUid(1);
+		List<User> users = userController.getUserWithUid("rohan.sanjaypawar@accoliteindia.com");
 		assertNotNull(users);
 		assertTrue(users.size() == 1);
 	}

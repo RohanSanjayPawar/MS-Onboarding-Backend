@@ -5,11 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ms.au.onboarding_portal.dao.UserDAOImpl;
+import com.ms.au.onboarding_portal.dao.impl.UserDAOImpl;
 import com.ms.au.onboarding_portal.model.User;
 
 /**
@@ -41,9 +43,9 @@ public class UserController {
 	 * @param uid the uid
 	 * @return the user with uid
 	 */
-	@GetMapping("/{uid}")
-	public List<User> getUserWithUid(@PathVariable(name="uid") int uid) {
-		return userDAO.getUserForId(uid);
+	@GetMapping("/{email}")
+	public List<User> getUserWithUid(@PathVariable(name="email") String email) {
+		return userDAO.getUserForEmail(email);
 	}
 	
 	/**
@@ -57,5 +59,14 @@ public class UserController {
 		return userDAO.loginUser(authorizationHeader);
 	}
 	
+	@PutMapping("/add")
+	public User addUser(@RequestBody User user) {
+		List<User> list = getAllUsers();
+		int n = list.size();
+		user.setUid(n+1);
+		
+		userDAO.addUser(user);
+		return user;
+	}
 
 }

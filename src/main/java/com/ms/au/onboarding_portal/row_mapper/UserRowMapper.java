@@ -38,7 +38,7 @@ public class UserRowMapper implements RowMapper<User>  {
 	public User mapRow(ResultSet row, int i) throws SQLException {
 		User user = new User();
 		user.setCreatedAt(row.getDate(CREATED_AT));
-		user.setCurrentOffice(row.getInt(CURRENT_OFFICE));
+		user.setCurrentOffice(row.getString(CURRENT_OFFICE));
 		user.setFailedLoginAttempt(row.getInt(FAILED_LOGIN_ATTEMPT));
 		user.setFirstName(row.getString(FIRST_NAME));
 		user.setLastLoginAt(row.getDate(LAST_LOGIN_AT));

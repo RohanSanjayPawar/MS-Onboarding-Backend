@@ -1,8 +1,9 @@
-package com.ms.au.onboarding_portal.dao;
+package com.ms.au.onboarding_portal.dao.impl;
 
 import static com.ms.au.onboarding_portal.queries.UserQueries.FETCH_USERS;
 import static com.ms.au.onboarding_portal.queries.UserQueries.FETCH_USER_WITH_UID;
 import static com.ms.au.onboarding_portal.queries.UserQueries.VALIDATE_USER;
+import static com.ms.au.onboarding_portal.queries.UserQueries.ADD_USER;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import com.ms.au.onboarding_portal.dao.UserDAO;
 import com.ms.au.onboarding_portal.model.User;
 import com.ms.au.onboarding_portal.row_mapper.UserRowMapper;
 
@@ -44,8 +46,8 @@ public class UserDAOImpl implements UserDAO {
 	 * @return the user for id
 	 */
 	@Override
-	public List<User> getUserForId(int uid) {
-		return jdbcTemplate.query(FETCH_USER_WITH_UID, new Object[] {uid}, new UserRowMapper());
+	public List<User> getUserForEmail(String email) {
+		return jdbcTemplate.query(FETCH_USER_WITH_UID, new Object[] {email}, new UserRowMapper());
 	}
 
 	@Override
@@ -60,5 +62,11 @@ public class UserDAOImpl implements UserDAO {
 		} catch(Exception e) {
 			return new ArrayList<>();
 		}
+	}
+
+	@Override
+	public void addUser(User user) {
+		Object[] params = new Object[] {user.getUid(), user.getFirstName(), user.getLastName(), user.getWebLoginId(), user.getPassword(), user.getFailedLoginAttempt(), user.getCurrentOffice(), user.getRole().label };
+		jdbcTemplate.update(ADD_USER, params);
 	}
 }
