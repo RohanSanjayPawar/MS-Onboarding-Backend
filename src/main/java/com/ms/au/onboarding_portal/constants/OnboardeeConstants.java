@@ -19,11 +19,17 @@ public class OnboardeeConstants {
 	/** The Constant WEB_LOGIN_ID. */
 	public static final String WEB_LOGIN_ID = "WEB_LOGIN_ID";
 	
+	/** The Constant DEMAND. */
+	public static final String DEMAND = "DEMAND";
+	
 	/** The Constant JOINING_LOCATION. */
 	public static final String JOINING_LOCATION = "JOINING_LOCATION";
 	
 	/** The Constant SKILLS. */
 	public static final String SKILLS = "SKILLS";
+	
+	/** The Constant EXPERIENCE. */
+	public static final String EXPERIENCE = "EXPERIENCE";
 	
 	/** The Constant HIRING_MANAGER. */
 	public static final String HIRING_MANAGER = "HIRING_MANAGER";

@@ -30,8 +30,14 @@ public class Onboardee {
 	/** The skill set. */
 	private List<String> skillSet;
 	
+	/** The experience. */
+	private int experience;
+	
 	/** The hiring manager. */
 	private String hiringManager;
+	
+	/** The demand id. */
+	private int demandId;
 	
 	/** The status. */
 	private String status;

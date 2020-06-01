@@ -28,4 +28,26 @@ public interface OnboardeeDAO {
 	 * @return the list
 	 */
 	public List<Onboardee> searchOnboardee(String field, String value);
+	
+	/**
+	 * Delete onboardee.
+	 *
+	 * @param uid the uid
+	 */
+	public void deleteOnboardee(int uid);
+	
+	/**
+	 * Update onboardee.
+	 *
+	 * @param onboardee the onboardee
+	 */
+	public void updateOnboardee(Onboardee onboardee);
+	
+	
+	/**
+	 * Adds the onboardee.
+	 *
+	 * @param onboardee the onboardee
+	 */
+	public void addOnboardee(Onboardee onboardee);
 }

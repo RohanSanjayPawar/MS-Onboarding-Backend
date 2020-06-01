@@ -5,7 +5,7 @@ package com.ms.au.onboarding_portal.constants;
  * 
  * @author Rohan Pawar
  */
-public class OfficeConstants {
+public class DemandConstants {
 	
 	/** The Constant UID. */
 	public static final String UID = "UID";
@@ -16,14 +16,21 @@ public class OfficeConstants {
 	/** The Constant OFFICE_ADDRESS. */
 	public static final String OFFICE_ADDRESS = "OFFICE_ADDRESS";
 	
+	/** The Constant DEMAND_PROFILE. */
+	public static final String DEMAND_PROFILE = "DEMAND_PROFILE";
+	
+	/** The Constant REQUIREMENTS. */
+	public static final String REQUIREMENTS = "REQUIREMENTS";
+	
+	/** The Constant EXPERIENCE. */
+	public static final String EXPERIENCE = "EXPERIENCE";
+	
+	
 	/** The Constant TOTAL_EMPLOYEES. */
-	public static final String TOTAL_EMPLOYEES = "TOTAL_EMPLOYEES";
+	public static final String TOTAL_DEMAND = "TOTAL_DEMAND";
 	
-	/** The Constant CURRENT_ONBOARDING. */
-	public static final String CURRENT_ONBOARDING = "CURRENT_ONBOARDING";
-	
-	/** The Constant DEMAND. */
-	public static final String DEMAND = "DEMAND";
+	/** The Constant IN_PROCESS. */
+	public static final String IN_PROCESS = "IN_PROCESS";
 	
 	/** The Constant DELETED. */
 	public static final String DELETED = "DELETED";
@@ -31,7 +38,7 @@ public class OfficeConstants {
 	/**
 	 * Instantiates a new office constants.
 	 */
-	private OfficeConstants() {
+	private DemandConstants() {
 		
 	}
 }

@@ -1,6 +1,7 @@
 package com.ms.au.onboarding_portal.controller;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,8 @@ import com.ms.au.onboarding_portal.model.UserLogs;
 @RestController
 @RequestMapping("/api/user-logs")
 public class UserLogsController {
+	
+	private static final Logger logger = Logger.getLogger(UserLogsController.class.getName());
 	
 	/** The user logs DAO. */
 	@Autowired
@@ -51,7 +54,7 @@ public class UserLogsController {
 		List<UserLogs> list = getUserLogs(uid);
 		int n = list.size();
 		userLog.setUid(n+1);
-		
+		logger.info("User Log to be added: " + userLog);
 		userLogsDAO.insertLog(userLog, uid);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
