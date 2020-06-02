@@ -16,8 +16,16 @@ import com.ms.au.onboarding_portal.model.Onboardee;
 public interface DemandDAO {
 	
 	/**
+	 * Gets the demands.
+	 *
+	 * @return the demands
+	 */
+	public List<Demand> getDemands();
+	
+	/**
 	 * Gets the all demand.
 	 *
+	 * @param uid the uid
 	 * @return the all demand
 	 */
 	public List<Demand> getAllDemand(int uid);
@@ -25,7 +33,8 @@ public interface DemandDAO {
 	/**
 	 * Gets the filtered demands.
 	 *
-	 * @param skills the skills
+	 * @param uid the uid
+	 * @param onboardee the onboardee
 	 * @return the filtered demands
 	 */
 	public List<Demand> getFilteredDemands(int uid, Onboardee onboardee);
@@ -36,4 +45,11 @@ public interface DemandDAO {
 	 * @param demand the demand
 	 */
 	public void addDemand(Demand demand);
+	
+	/**
+	 * Delete demand.
+	 *
+	 * @param uid the uid
+	 */
+	public void deleteDemand(int uid);
 }

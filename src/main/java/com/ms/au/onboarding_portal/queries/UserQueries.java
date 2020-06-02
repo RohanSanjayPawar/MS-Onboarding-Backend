@@ -19,6 +19,7 @@ public class UserQueries {
 	/** The Constant ADD_USER. */
 	public static final String ADD_USER = "INSERT INTO USER(UID, FIRST_NAME, LAST_NAME, WEB_LOGIN_ID, PASSWORD, FAILED_LOGIN_ATTEMPT, CURRENT_OFFICE, ROLE) VALUES(?,?,?,?,?,?,?,?)";
 	
+	public static final String DELETE_USER = "DELETE FROM USER WHERE UID=";
 	/**
 	 * Instantiates a new user queries.
 	 */

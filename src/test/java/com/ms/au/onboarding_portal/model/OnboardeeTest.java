@@ -9,11 +9,9 @@ import com.ms.au.onboarding_portal.PojoTestUtil;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-public class UserTest {
-	
+public class OnboardeeTest {
 	@Test
     public void testAccesors_shouldAccessProperField() {
-        PojoTestUtil.validateAccessors(User.class);
+        PojoTestUtil.validateAccessors(Onboardee.class);
     }
-	
 }

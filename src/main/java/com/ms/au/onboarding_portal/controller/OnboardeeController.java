@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ms.au.onboarding_portal.dao.impl.OnboardeeDAOImpl;
@@ -37,18 +36,6 @@ public class OnboardeeController {
 	@GetMapping("/")
 	public List<Onboardee> getAllOnboardee() {
 		return onboardeeDAO.getAllOnboardee();
-	}
-	
-	/**
-	 * Search onboardee.
-	 *
-	 * @param field the field
-	 * @param value the value
-	 * @return the list
-	 */
-	@GetMapping("/search")
-	public List<Onboardee> searchOnboardee(@RequestParam(name = "field") String field, @RequestParam(name = "value") String value) {
-		return onboardeeDAO.searchOnboardee(field, value);
 	}
 	
 	/**

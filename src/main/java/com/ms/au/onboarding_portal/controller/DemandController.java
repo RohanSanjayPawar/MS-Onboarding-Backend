@@ -30,6 +30,16 @@ public class DemandController {
 	public DemandDAOImpl demandDAO;
 	
 	/**
+	 * Gets the demands.
+	 *
+	 * @return the demands
+	 */
+	@GetMapping("/")
+	public List<Demand> getDemands() {
+		return demandDAO.getDemands();
+	}
+	
+	/**
 	 * Gets the all demands.
 	 *
 	 * @param uid the uid
@@ -61,6 +71,12 @@ public class DemandController {
 	@PutMapping("/add")
 	public ResponseEntity<Void> addDemand(@RequestBody Demand demand) {
 		demandDAO.addDemand(demand);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	@PutMapping("/delete/{uid}")
+	public ResponseEntity<Void> deleteDemand(@PathVariable(name="uid") int uid) {
+		demandDAO.deleteDemand(uid);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }

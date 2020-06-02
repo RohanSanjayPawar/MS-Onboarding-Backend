@@ -22,14 +22,6 @@ public interface OnboardeeDAO {
 	public List<Onboardee> getAllOnboardee();
 	
 	/**
-	 * Search onboardee.
-	 *
-	 * @param fieldValueMapping the field value mapping
-	 * @return the list
-	 */
-	public List<Onboardee> searchOnboardee(String field, String value);
-	
-	/**
 	 * Delete onboardee.
 	 *
 	 * @param uid the uid

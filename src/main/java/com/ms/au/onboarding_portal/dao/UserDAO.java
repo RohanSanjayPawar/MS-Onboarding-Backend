@@ -46,4 +46,11 @@ public interface UserDAO {
 	 */
 	public void addUser(User user);
 	
+	/**
+	 * Delete user.
+	 *
+	 * @param uid the uid
+	 */
+	public void deleteUser(int uid);
+	
 }

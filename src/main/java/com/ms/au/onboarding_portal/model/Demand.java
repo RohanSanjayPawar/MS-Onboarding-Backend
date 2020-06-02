@@ -2,14 +2,16 @@ package com.ms.au.onboarding_portal.model;
 
 import java.util.List;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Instantiates a new demand.
  * 
  * @author Rohan Pawar
  */
-@Data
+@Getter
+@Setter
 public class Demand {
 	
 	/** The uid. */

@@ -54,7 +54,10 @@ public class UserLogsController {
 		List<UserLogs> list = getUserLogs(uid);
 		int n = list.size();
 		userLog.setUid(n+1);
-		logger.info("User Log to be added: " + userLog);
+		StringBuilder sb = new StringBuilder("User Log to be added: ");
+		sb.append(userLog);
+		String log = sb.toString();
+		logger.info(log);
 		userLogsDAO.insertLog(userLog, uid);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}

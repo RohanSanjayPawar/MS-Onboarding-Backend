@@ -1,9 +1,10 @@
 package com.ms.au.onboarding_portal.dao.impl;
 
+import static com.ms.au.onboarding_portal.queries.UserQueries.ADD_USER;
+import static com.ms.au.onboarding_portal.queries.UserQueries.DELETE_USER;
 import static com.ms.au.onboarding_portal.queries.UserQueries.FETCH_USERS;
 import static com.ms.au.onboarding_portal.queries.UserQueries.FETCH_USER_WITH_UID;
 import static com.ms.au.onboarding_portal.queries.UserQueries.VALIDATE_USER;
-import static com.ms.au.onboarding_portal.queries.UserQueries.ADD_USER;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,5 +69,10 @@ public class UserDAOImpl implements UserDAO {
 	public void addUser(User user) {
 		Object[] params = new Object[] {user.getUid(), user.getFirstName(), user.getLastName(), user.getWebLoginId(), user.getPassword(), user.getFailedLoginAttempt(), user.getCurrentOffice(), user.getRole().label };
 		jdbcTemplate.update(ADD_USER, params);
+	}
+
+	@Override
+	public void deleteUser(int uid) {
+		jdbcTemplate.update(DELETE_USER+uid);
 	}
 }

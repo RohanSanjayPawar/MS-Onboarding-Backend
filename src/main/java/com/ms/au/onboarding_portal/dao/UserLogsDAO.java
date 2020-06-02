@@ -28,5 +28,5 @@ public interface UserLogsDAO {
 	 *
 	 * @param userLog the user log
 	 */
-	public void insertLog(UserLogs userlog, int uid);
+	public boolean insertLog(UserLogs userlog, int uid);
 }

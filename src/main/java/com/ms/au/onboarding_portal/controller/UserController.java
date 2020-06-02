@@ -3,6 +3,8 @@ package com.ms.au.onboarding_portal.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -67,6 +69,12 @@ public class UserController {
 		
 		userDAO.addUser(user);
 		return user;
+	}
+	
+	@PutMapping("/delete/{uid}")
+	public ResponseEntity<Void> deleteUser(@PathVariable(name="uid") int uid) {
+		userDAO.deleteUser(uid);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 }
