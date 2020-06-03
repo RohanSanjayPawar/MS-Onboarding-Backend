@@ -1,8 +1,7 @@
 package com.ms.au.onboarding_portal.controller;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,50 +9,85 @@ import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.RequestBuilder;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import com.ms.au.onboarding_portal.dao.impl.OnboardeeDAOImpl;
 import com.ms.au.onboarding_portal.model.Onboardee;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest
+@RunWith(SpringRunner.class)
+@WebMvcTest(value = OnboardeeController.class)
 public class OnboardeeControllerTest {
 	@Autowired
-	private OnboardeeController onboardeeController;
-	
+	private MockMvc mockMvc;
+
+	@MockBean
+	private OnboardeeDAOImpl dao;
+
 	@Test
-	public void getAllOnboardee() {
-		List<Onboardee> onboardees = onboardeeController.getAllOnboardee();
-		assertNotNull(onboardees);
-		assertTrue(onboardees.size() >= 0);
+	public void getAllOnboardee() throws Exception {
+		List<Onboardee> onboardees = new ArrayList<>();
+		onboardees.add(getOnboardee());
+
+		when(dao.getAllOnboardee()).thenReturn(onboardees);
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/api/onboardee/")
+				.accept(MediaType.APPLICATION_JSON);
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+		assertNotNull(result.getResponse().getContentAsString());
 	}
-	
+
 	@Test
-	public void onboardeeTest() {
+	public void addOnboardee() throws Exception {
 		Onboardee onboardee = getOnboardee();
-		List<Onboardee> list = onboardeeController.getAllOnboardee();
-		int uid = 201 + list.size();
-		onboardee.setUid(uid);
-		
-		ResponseEntity<Void> response = onboardeeController.addOnboardee(onboardee);
-		assertNotNull(response);
-		assertEquals(new ResponseEntity<>(HttpStatus.OK), response);
-		ResponseEntity<Void> response2 = onboardeeController.updateOnboardee(1, onboardee);
-		assertNotNull(response2);
-		assertEquals(new ResponseEntity<>(HttpStatus.OK), response2);
-		ResponseEntity<Void> response3 = onboardeeController.deleteOnboardee(uid);
-		assertNotNull(response);
-		assertEquals(new ResponseEntity<>(HttpStatus.OK), response3);
-		
+
+		when(dao.addOnboardee(onboardee)).thenReturn(onboardee);
+
+		String json = "{\"uid\": 1,\"firstName\": \"Loren\",\"lastName\": \"Ipsum\",\"webLoginId\": \"A\",\"joiningLocation\": \"H\",\"skillSet\": [\"Java\", \"Spring\"],\"experience\": 10, \"hiringManager\": \"C\",\"demandId\": 1, \"status\": \"D\", \"backgroundCheckStatus\": \"A\",\"etaForOnboarding\": 10}";
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.put("/api/onboardee/add")
+				.accept(MediaType.APPLICATION_JSON).content(json).contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+		assertNotNull(result.getResponse().getContentAsString());
+	}
+
+	@Test
+	public void updateOnboardee() throws Exception {
+		Onboardee onboardee = getOnboardee();
+
+		when(dao.updateOnboardee(onboardee)).thenReturn(onboardee);
+
+		String json = "{\"uid\": 1,\"firstName\": \"Loren\",\"lastName\": \"Ipsum\",\"webLoginId\": \"A\",\"joiningLocation\": \"H\",\"skillSet\": [\"Java\", \"Spring\"],\"experience\": 10, \"hiringManager\": \"C\",\"demandId\": 1, \"status\": \"D\", \"backgroundCheckStatus\": \"A\",\"etaForOnboarding\": 10}";
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.put("/api/onboardee/update/1")
+				.accept(MediaType.APPLICATION_JSON).content(json).contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+		assertNotNull(result.getResponse().getContentAsString());
 	}
 	
+	@Test
+	public void deleteOnboardee() throws Exception {
+		String json = "";
+
+		when(dao.deleteOnboardee(1)).thenReturn(1);
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.put("/api/onboardee/delete/1")
+				.accept(MediaType.APPLICATION_JSON).content(json).contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+		assertNotNull(result.getResponse().getContentAsString());
+	}
+
 	public Onboardee getOnboardee() {
 		Onboardee onboardee = new Onboardee();
 		List<String> list = new ArrayList<>();
 		list.add("Java");
-		
+		list.add("Spring");
+
 		onboardee.setBackgroundCheckStatus("A");
 		onboardee.setDemandId(1);
 		onboardee.setEtaForOnboarding(10);
@@ -66,7 +100,24 @@ public class OnboardeeControllerTest {
 		onboardee.setStatus("D");
 		onboardee.setUid(1);
 		onboardee.setWebLoginId("A");
-		
+
 		return onboardee;
 	}
 }
+
+//{
+//    "uid": 205,
+//    "firstName": "Loren",
+//    "lastName": "Ipsum",
+//    "webLoginId": "loren@accoliteindia.com",
+//    "joiningLocation": "Mumbai",
+//    "skillSet": [
+//        "Java",
+//        "Spring"
+//    ],
+//    "hiringManager": "Ruchi Pawar",
+//    "demandId": 2,
+//    "status": "Not Started",
+//    "backgroundCheckStatus": "Not Started",
+//    "etaForOnboarding": 10
+//}

@@ -26,14 +26,14 @@ public interface OnboardeeDAO {
 	 *
 	 * @param uid the uid
 	 */
-	public void deleteOnboardee(int uid);
+	public int deleteOnboardee(int uid);
 	
 	/**
 	 * Update onboardee.
 	 *
 	 * @param onboardee the onboardee
 	 */
-	public void updateOnboardee(Onboardee onboardee);
+	public Onboardee updateOnboardee(Onboardee onboardee);
 	
 	
 	/**
@@ -41,5 +41,5 @@ public interface OnboardeeDAO {
 	 *
 	 * @param onboardee the onboardee
 	 */
-	public void addOnboardee(Onboardee onboardee);
+	public Onboardee addOnboardee(Onboardee onboardee);
 }

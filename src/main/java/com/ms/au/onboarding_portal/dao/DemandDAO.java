@@ -44,12 +44,12 @@ public interface DemandDAO {
 	 *
 	 * @param demand the demand
 	 */
-	public void addDemand(Demand demand);
+	public Demand addDemand(Demand demand);
 	
 	/**
 	 * Delete demand.
 	 *
 	 * @param uid the uid
 	 */
-	public void deleteDemand(int uid);
+	public int deleteDemand(int uid);
 }

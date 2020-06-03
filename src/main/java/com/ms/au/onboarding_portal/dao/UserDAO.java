@@ -44,13 +44,13 @@ public interface UserDAO {
 	 *
 	 * @param user the user
 	 */
-	public void addUser(User user);
+	public User addUser(User user);
 	
 	/**
 	 * Delete user.
 	 *
 	 * @param uid the uid
 	 */
-	public void deleteUser(int uid);
+	public int deleteUser(int uid);
 	
 }

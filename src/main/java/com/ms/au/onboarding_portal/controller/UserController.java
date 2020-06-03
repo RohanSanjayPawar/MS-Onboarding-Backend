@@ -67,8 +67,7 @@ public class UserController {
 		int n = list.size();
 		user.setUid(n+1);
 		
-		userDAO.addUser(user);
-		return user;
+		return userDAO.addUser(user);
 	}
 	
 	@PutMapping("/delete/{uid}")

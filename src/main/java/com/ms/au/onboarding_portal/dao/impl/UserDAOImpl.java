@@ -6,7 +6,6 @@ import static com.ms.au.onboarding_portal.queries.UserQueries.FETCH_USERS;
 import static com.ms.au.onboarding_portal.queries.UserQueries.FETCH_USER_WITH_UID;
 import static com.ms.au.onboarding_portal.queries.UserQueries.VALIDATE_USER;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.tomcat.util.codec.binary.Base64;
@@ -53,26 +52,23 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public List<User> loginUser(String authorizationHeader) {
-		
 		String encoded = authorizationHeader.split(" ")[1];
 		byte[] decodedBytes = Base64.decodeBase64(encoded.getBytes());
 		final String pair = new String(decodedBytes);
 		final String[] userDetails = pair.split(":", 2);
-		try {
-			return jdbcTemplate.query(VALIDATE_USER, new Object[] {userDetails[0], userDetails[1]}, new UserRowMapper());
-		} catch(Exception e) {
-			return new ArrayList<>();
-		}
+		return jdbcTemplate.query(VALIDATE_USER, new Object[] {userDetails[0], userDetails[1]}, new UserRowMapper());
 	}
 
 	@Override
-	public void addUser(User user) {
+	public User addUser(User user) {
 		Object[] params = new Object[] {user.getUid(), user.getFirstName(), user.getLastName(), user.getWebLoginId(), user.getPassword(), user.getFailedLoginAttempt(), user.getCurrentOffice(), user.getRole().label };
 		jdbcTemplate.update(ADD_USER, params);
+		return user;
 	}
 
 	@Override
-	public void deleteUser(int uid) {
+	public int deleteUser(int uid) {
 		jdbcTemplate.update(DELETE_USER+uid);
+		return uid;
 	}
 }

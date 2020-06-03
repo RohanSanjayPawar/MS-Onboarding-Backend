@@ -1,10 +1,10 @@
 package com.ms.au.onboarding_portal.row_mapper;
 
-import static com.ms.au.onboarding_portal.constants.DemandConstants.OFFICE_LOCATION;
 import static com.ms.au.onboarding_portal.constants.DemandConstants.DEMAND_PROFILE;
 import static com.ms.au.onboarding_portal.constants.DemandConstants.EXPERIENCE;
 import static com.ms.au.onboarding_portal.constants.DemandConstants.IN_PROCESS;
 import static com.ms.au.onboarding_portal.constants.DemandConstants.OFFICE_ADDRESS;
+import static com.ms.au.onboarding_portal.constants.DemandConstants.OFFICE_LOCATION;
 import static com.ms.au.onboarding_portal.constants.DemandConstants.REQUIREMENTS;
 import static com.ms.au.onboarding_portal.constants.DemandConstants.TOTAL_DEMAND;
 import static com.ms.au.onboarding_portal.constants.DemandConstants.UID;

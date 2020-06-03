@@ -39,12 +39,8 @@ public class UserLogsDAOImpl implements UserLogsDAO {
 	@Override
 	public boolean insertLog(UserLogs userLog, int uid) {
 		Object[] params = new Object[] { userLog.getUid(), uid, userLog.getDescription(), userLog.getCreatedAt() };
-		try {
-			jdbcTemplate.update(ADD_LOGS, params);
-			return true;
-		} catch(Exception e) {
-			return false;
-		}
+		jdbcTemplate.update(ADD_LOGS, params);
+		return true;
 	}
 
 }

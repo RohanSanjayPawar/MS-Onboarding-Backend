@@ -43,8 +43,9 @@ public class OnboardeeDAOImpl implements OnboardeeDAO {
 	 * @param uid the uid
 	 */
 	@Override
-	public void deleteOnboardee(int uid) {
+	public int deleteOnboardee(int uid) {
 		jdbcTemplate.update(DELETE_ONBOARDEE, uid);
+		return uid;
 	}
 
 	/**
@@ -53,10 +54,11 @@ public class OnboardeeDAOImpl implements OnboardeeDAO {
 	 * @param onboardee the onboardee
 	 */
 	@Override
-	public void updateOnboardee(Onboardee onboardee) {
+	public Onboardee updateOnboardee(Onboardee onboardee) {
 		jdbcTemplate.update(UPDATE_ONBOARDEE, onboardee.getFirstName(), onboardee.getLastName(),
 				onboardee.getWebLoginId(), onboardee.getStatus(), onboardee.getBackgroundCheckStatus(),
 				onboardee.getEtaForOnboarding(), onboardee.getUid());
+		return onboardee;
 	}
 
 	/**
@@ -65,9 +67,10 @@ public class OnboardeeDAOImpl implements OnboardeeDAO {
 	 * @param onboardee the onboardee
 	 */
 	@Override
-	public void addOnboardee(Onboardee onboardee) {
+	public Onboardee addOnboardee(Onboardee onboardee) {
 		jdbcTemplate.update(ADD_ONBOARDEE, getUid(), onboardee.getFirstName(), onboardee.getLastName(),
 				onboardee.getWebLoginId(), listToString(onboardee.getSkillSet()), onboardee.getDemandId());
+		return onboardee;
 	}
 
 	public String listToString(List<String> skills) {

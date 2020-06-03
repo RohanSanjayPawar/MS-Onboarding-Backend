@@ -29,6 +29,8 @@ public class DemandDAOImpl implements DemandDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
+	private List<Demand> demands = new ArrayList<>();
+	
 	/**
 	 * Gets the demands.
 	 *
@@ -59,8 +61,8 @@ public class DemandDAOImpl implements DemandDAO {
 	 */
 	@Override
 	public List<Demand> getFilteredDemands(int uid, Onboardee onboardee) {
-		List<Demand> demands = getAllDemand(uid);
-		return filterDemands(demands, onboardee.getSkillSet(), onboardee.getExperience());
+		this.demands = getAllDemand(uid);
+		return filterDemands(onboardee.getSkillSet(), onboardee.getExperience());
 	}
 
 	/**
@@ -69,13 +71,15 @@ public class DemandDAOImpl implements DemandDAO {
 	 * @param demand the demand
 	 */
 	@Override
-	public void addDemand(Demand demand) {
+	public Demand addDemand(Demand demand) {
 		jdbcTemplate.update(ADD_DEMAND, getUid(), demand.getLocation(), demand.getAddress(), listToString(demand.getRequirements()), demand.getExperience(), demand.getRole(), demand.getTotal(), demand.getInProcess());
+		return demand;
 	}
 	
 	@Override
-	public void deleteDemand(int uid) {
+	public int deleteDemand(int uid) {
 		jdbcTemplate.update(DELETE_DEMAND + uid);
+		return uid;
 	}
 	
 	/**
@@ -85,10 +89,10 @@ public class DemandDAOImpl implements DemandDAO {
 	 * @param skills the skills
 	 * @return the list
 	 */
-	public List<Demand> filterDemands(List<Demand> demands, List<String> skills, int experience) {
+	public List<Demand> filterDemands(List<String> skills, int experience) {
 		List<Demand> filtered = new ArrayList<>();
 		
-		for(Demand demand: demands) {
+		for(Demand demand: this.demands) {
 			for(String skill: skills) {
 				if(demand.getExperience() > experience)
 					break;
