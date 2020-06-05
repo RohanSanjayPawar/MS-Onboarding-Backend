@@ -104,20 +104,3 @@ public class OnboardeeControllerTest {
 		return onboardee;
 	}
 }
-
-//{
-//    "uid": 205,
-//    "firstName": "Loren",
-//    "lastName": "Ipsum",
-//    "webLoginId": "loren@accoliteindia.com",
-//    "joiningLocation": "Mumbai",
-//    "skillSet": [
-//        "Java",
-//        "Spring"
-//    ],
-//    "hiringManager": "Ruchi Pawar",
-//    "demandId": 2,
-//    "status": "Not Started",
-//    "backgroundCheckStatus": "Not Started",
-//    "etaForOnboarding": 10
-//}

@@ -36,6 +36,13 @@ public class UserLogsDAOImpl implements UserLogsDAO {
 		return jdbcTemplate.query(FETCH_ALL_LOGS_FOR_USER, new Object[] {uid}, new UserLogsRowMapper());
 	}
 
+	/**
+	 * Insert log.
+	 *
+	 * @param userLog the user log
+	 * @param uid the uid
+	 * @return true, if successful
+	 */
 	@Override
 	public boolean insertLog(UserLogs userLog, int uid) {
 		Object[] params = new Object[] { userLog.getUid(), uid, userLog.getDescription(), userLog.getCreatedAt() };

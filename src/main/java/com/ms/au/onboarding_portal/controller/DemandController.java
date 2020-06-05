@@ -74,9 +74,27 @@ public class DemandController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
+	/**
+	 * Delete demand.
+	 *
+	 * @param uid the uid
+	 * @return the response entity
+	 */
 	@PutMapping("/delete/{uid}")
 	public ResponseEntity<Void> deleteDemand(@PathVariable(name="uid") int uid) {
 		demandDAO.deleteDemand(uid);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	/**
+	 * Updatete demand.
+	 *
+	 * @param uid the uid
+	 * @return the response entity
+	 */
+	@PutMapping("/update/{uid}")
+	public ResponseEntity<Void> updateteDemand(@PathVariable(name="uid") int uid) {
+		demandDAO.updateDemand(uid);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }

@@ -114,6 +114,18 @@ public class DemandControllerTest {
 		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
 		assertNotNull(result.getResponse().getContentAsString());
 	}
+	
+	@Test
+	public void updateDemnad() throws Exception {
+		String json = "";
+
+		when(dao.updateDemand(1)).thenReturn(1);
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.put("/api/demand/update/1")
+				.accept(MediaType.APPLICATION_JSON).content(json).contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+		assertNotNull(result.getResponse().getContentAsString());
+	}
 
 	public Demand getDemand() {
 		Demand demand = new Demand();

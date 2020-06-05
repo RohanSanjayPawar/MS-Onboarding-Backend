@@ -27,7 +27,7 @@ public class UserController {
 
 	/** The dao. */
 	@Autowired
-	public UserDAOImpl userDAO;
+	private UserDAOImpl userDAO;
 
 	/**
 	 * Gets the all users.

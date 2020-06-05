@@ -45,7 +45,7 @@ public class OnbaordeeDAOTest {
     	Onboardee onboardee = getOnboardee();
     	when(jdbcTemplate.update(UPDATE_ONBOARDEE, onboardee.getFirstName(), onboardee.getLastName(),
 				onboardee.getWebLoginId(), onboardee.getStatus(), onboardee.getBackgroundCheckStatus(),
-				onboardee.getEtaForOnboarding(), onboardee.getUid())).thenReturn(1);
+				onboardee.getEtaForOnboarding(), onboardee.getExperience(), onboardee.getUid())).thenReturn(1);
     	
     	Onboardee result = dao.updateOnboardee(onboardee);
     	assertNotNull(result);
@@ -55,7 +55,9 @@ public class OnbaordeeDAOTest {
     public void addOnboardee() {
     	Onboardee onboardee = getOnboardee();
     	when(jdbcTemplate.update(ADD_ONBOARDEE, dao.getUid(), onboardee.getFirstName(), onboardee.getLastName(),
-				onboardee.getWebLoginId(), dao.listToString(onboardee.getSkillSet()), onboardee.getDemandId())).thenReturn(1);
+				onboardee.getWebLoginId(), dao.listToString(onboardee.getSkillSet()), onboardee.getDemandId(),
+				onboardee.getStatus(), onboardee.getBackgroundCheckStatus(), onboardee.getEtaForOnboarding(),
+				onboardee.getExperience())).thenReturn(1);
     	
     	Onboardee result = dao.addOnboardee(onboardee);
     	assertNotNull(result);

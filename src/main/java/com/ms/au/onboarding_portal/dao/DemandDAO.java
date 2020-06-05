@@ -52,4 +52,12 @@ public interface DemandDAO {
 	 * @param uid the uid
 	 */
 	public int deleteDemand(int uid);
+	
+	/**
+	 * Update demand.
+	 *
+	 * @param uid the uid
+	 * @return the demand
+	 */
+	public int updateDemand(int uid);
 }

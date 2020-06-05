@@ -53,7 +53,7 @@ public class UserLogsController {
 	public ResponseEntity<Void> addLogs(@PathVariable(name="uid") int uid, @RequestBody UserLogs userLog) {
 		List<UserLogs> list = getUserLogs(uid);
 		int n = list.size();
-		userLog.setUid(n+1);
+		userLog.setUid(uid*1000 + n+1);
 		StringBuilder sb = new StringBuilder("User Log to be added: ");
 		sb.append(userLog);
 		String log = sb.toString();

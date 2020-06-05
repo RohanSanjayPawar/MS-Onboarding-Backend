@@ -50,6 +50,12 @@ public class UserDAOImpl implements UserDAO {
 		return jdbcTemplate.query(FETCH_USER_WITH_UID, new Object[] {email}, new UserRowMapper());
 	}
 
+	/**
+	 * Login user.
+	 *
+	 * @param authorizationHeader the authorization header
+	 * @return the list
+	 */
 	@Override
 	public List<User> loginUser(String authorizationHeader) {
 		String encoded = authorizationHeader.split(" ")[1];
@@ -59,6 +65,12 @@ public class UserDAOImpl implements UserDAO {
 		return jdbcTemplate.query(VALIDATE_USER, new Object[] {userDetails[0], userDetails[1]}, new UserRowMapper());
 	}
 
+	/**
+	 * Adds the user.
+	 *
+	 * @param user the user
+	 * @return the user
+	 */
 	@Override
 	public User addUser(User user) {
 		Object[] params = new Object[] {user.getUid(), user.getFirstName(), user.getLastName(), user.getWebLoginId(), user.getPassword(), user.getFailedLoginAttempt(), user.getCurrentOffice(), user.getRole().label };
@@ -66,6 +78,12 @@ public class UserDAOImpl implements UserDAO {
 		return user;
 	}
 
+	/**
+	 * Delete user.
+	 *
+	 * @param uid the uid
+	 * @return the int
+	 */
 	@Override
 	public int deleteUser(int uid) {
 		jdbcTemplate.update(DELETE_USER+uid);

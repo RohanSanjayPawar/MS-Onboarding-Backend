@@ -35,6 +35,8 @@ public class DemandConstants {
 	/** The Constant DELETED. */
 	public static final String DELETED = "DELETED";
 	
+	/** The Constant DEMAND_UID. */
+	public static final String DEMAND_UID = "DEMAND_UID";
 	/**
 	 * Instantiates a new office constants.
 	 */

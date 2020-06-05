@@ -57,7 +57,7 @@ public class OnboardeeDAOImpl implements OnboardeeDAO {
 	public Onboardee updateOnboardee(Onboardee onboardee) {
 		jdbcTemplate.update(UPDATE_ONBOARDEE, onboardee.getFirstName(), onboardee.getLastName(),
 				onboardee.getWebLoginId(), onboardee.getStatus(), onboardee.getBackgroundCheckStatus(),
-				onboardee.getEtaForOnboarding(), onboardee.getUid());
+				onboardee.getEtaForOnboarding(), onboardee.getExperience(), onboardee.getUid());
 		return onboardee;
 	}
 
@@ -69,7 +69,9 @@ public class OnboardeeDAOImpl implements OnboardeeDAO {
 	@Override
 	public Onboardee addOnboardee(Onboardee onboardee) {
 		jdbcTemplate.update(ADD_ONBOARDEE, getUid(), onboardee.getFirstName(), onboardee.getLastName(),
-				onboardee.getWebLoginId(), listToString(onboardee.getSkillSet()), onboardee.getDemandId());
+				onboardee.getWebLoginId(), listToString(onboardee.getSkillSet()), onboardee.getDemandId(),
+				onboardee.getStatus(), onboardee.getBackgroundCheckStatus(), onboardee.getEtaForOnboarding(),
+				onboardee.getExperience());
 		return onboardee;
 	}
 

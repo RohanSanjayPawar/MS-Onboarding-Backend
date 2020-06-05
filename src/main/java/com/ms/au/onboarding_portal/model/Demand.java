@@ -17,6 +17,9 @@ public class Demand {
 	/** The uid. */
 	private int uid;
 	
+	/** The demand uid. */
+	private int demandUid;
+	
 	/** The location. */
 	private String location;
 	
@@ -37,4 +40,7 @@ public class Demand {
 	
 	/** The in process. */
 	private int inProcess;
+	
+	/** The hiring manager. */
+	private String hiringManager;
 }

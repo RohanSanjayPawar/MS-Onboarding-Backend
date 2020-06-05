@@ -4,6 +4,7 @@ import static com.ms.au.onboarding_portal.queries.DemandQueries.ADD_DEMAND;
 import static com.ms.au.onboarding_portal.queries.DemandQueries.ALL_DEMANDS;
 import static com.ms.au.onboarding_portal.queries.DemandQueries.DELETE_DEMAND;
 import static com.ms.au.onboarding_portal.queries.DemandQueries.FETCH_ALL_DEMANDS;
+import static com.ms.au.onboarding_portal.queries.DemandQueries.UPDATE_DEMAND;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.when;
 
@@ -92,6 +93,14 @@ public class DemandDAOTest {
     	when(jdbcTemplate.update(DELETE_DEMAND + 1)).thenReturn(1);
     	
     	int result = dao.deleteDemand(1);
+    	assertNotNull(result);
+    }
+    
+    @Test 
+    public void updateDemand() {
+    	when(jdbcTemplate.update(UPDATE_DEMAND + 1)).thenReturn(1);
+    	
+    	int result = dao.updateDemand(1);
     	assertNotNull(result);
     }
     
