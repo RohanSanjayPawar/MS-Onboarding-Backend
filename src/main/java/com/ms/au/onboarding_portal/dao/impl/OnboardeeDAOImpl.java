@@ -1,6 +1,7 @@
 package com.ms.au.onboarding_portal.dao.impl;
 
 import static com.ms.au.onboarding_portal.queries.OnboardeeQueries.ADD_ONBOARDEE;
+import static com.ms.au.onboarding_portal.queries.OnboardeeQueries.ALL_ONBOARDEE;
 import static com.ms.au.onboarding_portal.queries.OnboardeeQueries.DELETE_ONBOARDEE;
 import static com.ms.au.onboarding_portal.queries.OnboardeeQueries.FETCH_ALL_ONBOARDEE;
 import static com.ms.au.onboarding_portal.queries.OnboardeeQueries.UPDATE_ONBOARDEE;
@@ -87,6 +88,16 @@ public class OnboardeeDAOImpl implements OnboardeeDAO {
 	}
 
 	public int getUid() {
-		return 200 + getAllOnboardee().size() + 1;
+		return 200 + allOnboardees().size() + 1;
+	}
+
+	/**
+	 * All onboardees.
+	 *
+	 * @return the list
+	 */
+	@Override
+	public List<Onboardee> allOnboardees() {
+		return jdbcTemplate.query(ALL_ONBOARDEE, new OnboardeeRowMapper());
 	}
 }

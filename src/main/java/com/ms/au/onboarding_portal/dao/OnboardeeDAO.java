@@ -42,4 +42,11 @@ public interface OnboardeeDAO {
 	 * @param onboardee the onboardee
 	 */
 	public Onboardee addOnboardee(Onboardee onboardee);
+	
+	/**
+	 * All onboardees.
+	 *
+	 * @return the list
+	 */
+	public List<Onboardee> allOnboardees();
 }
