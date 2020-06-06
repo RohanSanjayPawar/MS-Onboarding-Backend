@@ -56,7 +56,7 @@ public class DemandRowMapper implements RowMapper<Demand> {
 		
 		String name = "";
 		try {
-			name = row.getString(FIRST_NAME) + row.getString(LAST_NAME);
+			name = row.getString(FIRST_NAME) + " " + row.getString(LAST_NAME);
 		} catch(SQLException e) {
 			StringBuilder error = new StringBuilder("Error occured while row mapping: ");
 			error.append(e);
