@@ -97,4 +97,16 @@ public class DemandController {
 		demandDAO.updateDemand(uid);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
+	
+	/**
+	 * Delete onboardee.
+	 *
+	 * @param uid the uid
+	 * @return the response entity
+	 */
+	@PutMapping("/delete-onboardee/{uid}")
+	public ResponseEntity<Void> deleteOnboardee(@PathVariable(name="uid") int uid) {
+		demandDAO.deleteOnboardee(uid);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
 }

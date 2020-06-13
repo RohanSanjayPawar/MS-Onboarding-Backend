@@ -60,4 +60,12 @@ public interface DemandDAO {
 	 * @return the demand
 	 */
 	public int updateDemand(int uid);
+	
+	/**
+	 * Delete onboardee.
+	 *
+	 * @param uid the uid
+	 * @return the int
+	 */
+	public int deleteOnboardee(int uid);
 }

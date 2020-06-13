@@ -126,6 +126,18 @@ public class DemandControllerTest {
 		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
 		assertNotNull(result.getResponse().getContentAsString());
 	}
+	
+	@Test
+	public void deleteOnboardee() throws Exception {
+		String json = "";
+
+		when(dao.deleteOnboardee(1)).thenReturn(1);
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.put("/api/demand/delete-onboardee/1")
+				.accept(MediaType.APPLICATION_JSON).content(json).contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+		assertNotNull(result.getResponse().getContentAsString());
+	}
 
 	public Demand getDemand() {
 		Demand demand = new Demand();

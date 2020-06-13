@@ -25,6 +25,9 @@ public class DemandQueries {
 	/** The Constant UPDATE_DEMAND. */
 	public static final String UPDATE_DEMAND = "UPDATE DEMAND SET TOTAL_DEMAND = TOTAL_DEMAND - 1 WHERE TOTAL_DEMAND > 0 AND UID=";
 	
+	/** The Constant DELETE_ONBOARDEE. */
+	public static final String DELETE_ONBOARDEE = "UPDATE DEMAND SET TOTAL_DEMAND = TOTAL_DEMAND + 1 WHERE TOTAL_DEMAND > 0 AND UID=";
+	
 	/**
 	 * Instantiates a new demand queries.
 	 */

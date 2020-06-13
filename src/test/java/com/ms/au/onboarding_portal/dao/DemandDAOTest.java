@@ -3,6 +3,7 @@ package com.ms.au.onboarding_portal.dao;
 import static com.ms.au.onboarding_portal.queries.DemandQueries.ADD_DEMAND;
 import static com.ms.au.onboarding_portal.queries.DemandQueries.ALL_DEMANDS;
 import static com.ms.au.onboarding_portal.queries.DemandQueries.DELETE_DEMAND;
+import static com.ms.au.onboarding_portal.queries.DemandQueries.DELETE_ONBOARDEE;
 import static com.ms.au.onboarding_portal.queries.DemandQueries.FETCH_ALL_DEMANDS;
 import static com.ms.au.onboarding_portal.queries.DemandQueries.UPDATE_DEMAND;
 import static org.junit.Assert.assertNotNull;
@@ -99,6 +100,14 @@ public class DemandDAOTest {
     @Test 
     public void updateDemand() {
     	when(jdbcTemplate.update(UPDATE_DEMAND + 1)).thenReturn(1);
+    	
+    	int result = dao.updateDemand(1);
+    	assertNotNull(result);
+    }
+    
+    @Test 
+    public void deleteOnboardee() {
+    	when(jdbcTemplate.update(DELETE_ONBOARDEE + 1)).thenReturn(1);
     	
     	int result = dao.updateDemand(1);
     	assertNotNull(result);

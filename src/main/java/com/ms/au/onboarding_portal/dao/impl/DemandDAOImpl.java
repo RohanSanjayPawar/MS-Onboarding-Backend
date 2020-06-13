@@ -3,6 +3,7 @@ package com.ms.au.onboarding_portal.dao.impl;
 import static com.ms.au.onboarding_portal.queries.DemandQueries.ADD_DEMAND;
 import static com.ms.au.onboarding_portal.queries.DemandQueries.ALL_DEMANDS;
 import static com.ms.au.onboarding_portal.queries.DemandQueries.DELETE_DEMAND;
+import static com.ms.au.onboarding_portal.queries.DemandQueries.DELETE_ONBOARDEE;
 import static com.ms.au.onboarding_portal.queries.DemandQueries.FETCH_ALL_DEMANDS;
 import static com.ms.au.onboarding_portal.queries.DemandQueries.UPDATE_DEMAND;
 
@@ -98,6 +99,18 @@ public class DemandDAOImpl implements DemandDAO {
 	@Override
 	public int updateDemand(int uid) {
 		jdbcTemplate.update(UPDATE_DEMAND+uid);
+		return uid;
+	}
+	
+	/**
+	 * Delete onboardee.
+	 *
+	 * @param uid the uid
+	 * @return the int
+	 */
+	@Override
+	public int deleteOnboardee(int uid) {
+		jdbcTemplate.update(DELETE_ONBOARDEE+uid);
 		return uid;
 	}
 
